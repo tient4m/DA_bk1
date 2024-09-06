@@ -1,0 +1,29 @@
+body {
+    background-color: #f8f9fa;
+    /* Màu nền xám nhạt */
+}
+
+.body {
+    min-height: 100vh;
+    /* Đảm bảo nội dung chiếm toàn bộ chiều cao màn hình */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    border: 1px solid #dee2e6;
+    /* Viền card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Hiệu ứng đổ bóng nhẹ */
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6;
+    /* Viền cho bảng */
+}
+
+.table-bordered td {
+    border: 1px solid #dee2e6;
+    /* Viền cho các ô trong bảng */
+}

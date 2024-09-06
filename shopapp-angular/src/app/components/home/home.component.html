@@ -1,0 +1,131 @@
+<app-header></app-header>
+<header>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+</header>
+<div class="container">
+  <div class="intro-section">
+  </div>
+
+  <div> <app-recommender></app-recommender></div>
+  <div class="search-box">
+    <input type="text" class="form-control search-input" placeholder="Tìm sản phẩm" [(ngModel)]="keyword">
+    <select class="form-control product-category" [(ngModel)]="selectedCategoryId">
+      <option [value]="0">Tất cả</option>
+      @for(category of categories; track category.name) {
+      <option [value]="category.id">
+        {{ category.name }}
+      </option>
+      }
+
+    </select>
+    <button class="btn btn-primary" (click)="searchProducts()">Tìm kiếm</button>
+  </div>
+  <section class="services section">
+    <div class="service_container container grid">
+      <article class="services_card">
+        <i class="ri-truck-line"></i>
+        <h3 class="services_title">Free Shipping</h3>
+        <p class="service_description">For All Orders</p>
+      </article>
+
+      <article class="services_card">
+        <i class="ri-lock-2-line"></i>
+        <h3 class="services_title">Secure Payment</h3>
+        <p class="service_description">100% Secure Payment</p>
+      </article>
+
+      <article class="services_card">
+        <i class="ri-customer-service-2-line"></i>
+        <h3 class="services_title">24/7 Support</h3>
+        <p class="service_description">Call us anytime</p>
+      </article>
+    </div>
+  </section>
+  <!--Đoạn này có 1 ô searchbox bên trái, 1 combobox bên phải  -->
+  <h1 class="new_title">New Book</h1>
+  <div class="row">
+    @for(product of products; track product.id) {
+    <div class="col-lg-4 col-md-6">
+      <a class="new_card" (click)="onProductClick(product.id)">
+        <img [src]="product.url" alt="Product Image" class="new_img">
+        <div>
+          <h2 class="new_title">{{ product.name }}</h2>
+          <div class="new_prices">
+            <span class="new_discount">{{ product.price }} VNĐ</span>
+            <span class="new_price">{{ product.price * 1.25 }} VNĐ</span>
+
+          </div>
+          <div class="new_stars">
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-fill"></i>
+            <i class="ri-star-half-fill"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+    }
+  </div>
+</div>
+
+<div class="d-flex justify-content-center" style="margin-top: 20px;">
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      @if(currentPage > 0) {
+      <li class="page-item">
+        <a class="page-link pagi-click" (click)="onPageChange(0)">First</a>
+      </li>
+      }
+      @if(currentPage > 0) {
+      <li class="page-item">
+        <a class="page-link pagi-click" (click)="onPageChange(currentPage - 1)">
+          <i class="fa fa-chevron-left"></i>
+        </a>
+      </li>
+      }
+      @for(page of visiblePages; track page) {
+      <ng-container>
+        <li class="page-item">
+          <a class="page-link pagi-click" [ngClass]="{'active': page === currentPage + 1}"
+            (click)="onPageChange(page - 1)">{{ page }}</a>
+        </li>
+      </ng-container>
+      }
+
+      @if(currentPage < totalPages - 1) { <li class="page-item">
+        <a class="page-link pagi-click" (click)="onPageChange(currentPage + 1)">
+          <i class="fa fa-chevron-right"></i>
+        </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link pagi-click" (click)="onPageChange(totalPages - 1)">Last</a>
+        </li>
+        }
+    </ul>
+  </nav>
+</div>
+<section class="discount section" id="discount">
+  <div class="discount_container container grid">
+    <div class="discount_data">
+      <h2 class="discount_title section_title">
+        Up To 50% Discount
+      </h2>
+
+      <p class="discount_description">
+        Take advantage of the discount days we
+        have for you, buy books from your favorite
+        writers, the more you buy, the more
+        discounts we have for you.
+      </p>
+      <a type="button" class="btn btn-outline-secondary">Shop Now</a>
+    </div>
+
+    <div class="discount_images">
+      <img src="assets/img/discount-book-1.png" class="discount_img-1" alt="">
+      <img src="assets/img/discount-book-2.png" class="discount_img-2" alt="">
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

@@ -1,0 +1,8 @@
+@if (message) {
+<div class="notification-box" [ngClass]="{ 'error': isError, 'success': isSuccess }">
+    <button (click)="close()">X</button>
+    <div class="notification-content">
+        <span>{{ message }}</span>
+    </div>
+</div>
+}

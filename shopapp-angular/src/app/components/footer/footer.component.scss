@@ -1,0 +1,62 @@
+.footer {
+    padding-block: 4rem 6rem;
+    background-color: var(--background-color);
+    /* Thêm màu nền nếu cần */
+}
+
+.footer_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 2rem;
+    width: 100%;
+}
+
+.footer_container>div:first-child {
+    flex: 1;
+    text-align: left;
+    /* Căn trái logo và mô tả */
+}
+
+.footer_data {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 3rem;
+    flex: 2;
+}
+
+.footer_title {
+    font-size: var(--h3-font-size);
+    margin-bottom: 1.25rem;
+}
+
+.footer_links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    row-gap: .5rem;
+}
+
+.footer_info {
+    font-style: normal;
+}
+
+.footer_social {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.footer_social-link {
+    font-size: 1.25rem;
+    color: var(--first-color);
+}
+
+.footer_copy {
+    display: block;
+    margin-top: 2rem;
+    text-align: center;
+    font-size: var(--small-font-size);
+}

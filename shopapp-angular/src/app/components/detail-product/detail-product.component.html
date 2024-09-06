@@ -1,0 +1,107 @@
+<app-header></app-header>
+<div class="container">
+  <div class="intro-section">
+    <h1>Thông tin sản phẩm</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          @for(image of product?.product_images;
+          track image.image_url;let i = $index;) {
+          <div class="carousel-item" [ngClass]="{'active': i === currentImageIndex}">
+            <div class="square-image">
+              <img [src]="image.image_url" class="product-image" alt="Product Image">
+            </div>
+          </div>
+          }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev"
+          (click)="previousImage()">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next"
+          (click)="nextImage()">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="row">
+        <div class="thumbnail-container">
+          @for(image of product?.product_images;
+          track image.image_url; let i = $index) {
+          <div class="thumbnail-item" [ngClass]="{'active': i === currentImageIndex}" (click)="thumbnailClick(i)">
+            <img [src]="image.image_url" class="thumbnail-image" alt="Thumbnail Image">
+          </div>
+          }
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="product-details">
+        <h2>{{ product?.name }}</h2>
+        <p>{{ product?.description }}</p>
+        <p>Đánh giá: {{ product?.rate | number: '1.2-2' }}
+          <i class="fas fa-star yellow-star-with-border"></i>
+        </p>
+        <p>Giá: {{ product?.price | number:'1.1-2' }} VNĐ</p>
+        <p>Tổng tiền: {{ getTotalPrice() | number:'1.1-2' }}VNĐ</p>
+
+        <div class="product-actions">
+          <button class="btn btn-primary" (click)="addToCart()">Thêm vào giỏ hàng</button>
+          <button class="btn btn-success" (click)="buyNow()">Mua ngay</button>
+        </div>
+        <div class="product-quantity">
+          <div class="border-wrapper">
+            <button (click)="decreaseQuantity()">-</button>
+            <input type="text" [value]="quantity">
+            <button (click)="increaseQuantity()">+</button>
+          </div>
+        </div>
+        <p>Kho: {{ product?.quantity }}</p>
+      </div>
+      <div class="product-comments">
+        <h3>Bình luận của khách hàng</h3>
+        @for (comment of comments; track comment) {
+        <div class="comment">
+          <p class="comment-user"><strong>{{ comment.user.fullname }}</strong></p>
+          <p class="comment-content">{{ comment.content }}</p>
+        </div>
+
+        }
+        <div class="d-flex justify-content-center">
+          <nav aria-label="Page navigation">
+            <ul class="pagination">
+              @if(currentPage > 1) {
+              <li class="page-item">
+                <a class="page-link" (click)="onPageChange(1)">First</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" (click)="onPageChange(currentPage - 1)">Previous</a>
+              </li>
+              }
+              @for(page of visiblePages; track page) {
+              <ng-container>
+                <li class="page-item" [ngClass]="{'active': page === currentPage}">
+                  <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
+                </li>
+              </ng-container>
+              }
+
+              @if(currentPage < totalPages) { <li class="page-item">
+                <a class="page-link" (click)="onPageChange(currentPage + 1)">Next</a>
+                </li>
+                <li class="page-item">
+                  <a class="page-link" (click)="onPageChange(totalPages)">Last</a>
+                </li>
+                }
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

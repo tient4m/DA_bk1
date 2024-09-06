@@ -1,0 +1,61 @@
+<!-- 
+<div class="container mt-4">
+  <h2 class="text-center mb-3">SẢN PHẨM BÁN CHẠY</h2>
+  <div id="productCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      @for(product of productRecommended; track product.id) {
+      <div class="col-lg-4 col-md-6">
+        <div class="product-item" (click)="onProductClick(product.id)">
+          <img [src]="product.url" alt="Product Image" class="product-image">
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-description">{{ product.description }}</p>
+          <p class="product-price">Giá: ${{ product.price }}</p>
+        </div>
+      </div>
+      }
+    </div>
+    <a class="carousel-control-prev" href="#productCarousel" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#productCarousel" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div> -->
+
+<div class="container mt-4">
+  <div class="section_title">
+    Sách nổi bật
+  </div>
+  <div id="productCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="row">
+        @for (product of productGroups[currentGroupIndex]; track product.id) {
+        <div class="col-lg-3 col-md-6">
+          <div class="product-item" (click)="onProductClick(product.id)">
+            <img [src]="product.url" alt="Product Image" class="product-image">
+            <h3 class="product-name">{{ product.name }}</h3>
+            <!-- <p class="product-description">{{ product.description }}</p> -->
+            <p class="product-price">Giá: {{ product.price }} VNĐ</p>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Nút điều khiển trái -->
+    <a class="carousel-control-prev" role="button" (click)="previousGroup()">
+      <span class="carousel-control-prev-icon black" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+
+    <!-- Nút điều khiển phải -->
+    <a class="carousel-control-next" role="button" (click)="nextGroup()">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+
+  </div>
+</div>

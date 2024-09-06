@@ -1,0 +1,191 @@
+@import '../../styles/shared-styles.scss';
+@import url("https://fonts.googleapis.com/css2?family=Montagu+Slab:wght@500&family=Montserrat:wght@400;500;600&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Tint&family=New+Amsterdam&family=Roboto&display=swap');
+
+.intro-section {
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.section_title {
+    font-size: 35px;
+    font-family: "Bungee Tint", sans-serif;
+    /* Điều chỉnh kích thước chữ tùy ý */
+    font-weight: bold;
+    text-align: center;
+    /* Căn giữa văn bản */
+    margin-bottom: 20px;
+    /* Khoảng cách phía dưới */
+}
+
+
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    /* Căn giữa theo chiều dọc */
+    transform: translateY(-50%);
+    /* Căn giữa theo chiều dọc */
+    width: 50px;
+    /* Kích thước nút điều khiển */
+    height: 50px;
+    /* Kích thước nút điều khiển */
+    background-color: #f0f0f0;
+    /* Nền màu xám nhạt */
+    border: 2px solid #ccc;
+    /* Viền màu xám */
+    border-radius: 50%;
+    /* Bo tròn */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    /* Đảm bảo nút điều khiển nằm trên carousel */
+    cursor: pointer;
+    /* Thêm con trỏ pointer */
+}
+
+.carousel-control-prev {
+    left: -60px;
+    /* Đặt nút điều khiển bên trái */
+}
+
+.carousel-control-next {
+    right: -60px;
+    /* Đặt nút điều khiển bên phải */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: #000;
+    // background-color: transparent;
+    /* Làm nền trong suốt */
+    border: 2px solid #ccc;
+    /* Viền màu xám cho biểu tượng */
+    border-radius: 50%;
+    /* Bo tròn biểu tượng */
+    width: 100%;
+    /* Đảm bảo biểu tượng chiếm hết không gian */
+    height: 100%;
+}
+
+
+
+.search-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+
+.product-category {
+    width: 200px;
+    background-color: rgba(16, 18, 38, 255) !important;
+    color: white !important;
+}
+
+.search-input {
+    width: 300px;
+    background-color: $shopapp-background-color;
+    margin-right: 10px;
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+}
+
+.form-control {
+    background-color: transparent;
+    color: white;
+}
+
+.form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+}
+
+.form-control:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-control::-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.product-item {
+    position: relative;
+    background-color: white;
+    border: 2px solid var(--border-color);
+    border-radius: 1rem;
+    padding: 15px;
+    margin-bottom: 20px;
+    height: 400px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+    transition: border .4s, background-color .4s;
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    margin-bottom: 10px;
+    border: #ccc 1px solid;
+}
+
+.product-name {
+    color: rgb(3, 3, 3);
+    height: 60px;
+    font-family: "Montserrat", sans-serif;
+}
+
+.product-description {
+    color: rgb(7, 7, 7);
+}
+
+.product-warranty {
+    color: rgb(0, 0, 0);
+}
+
+.product-price {
+    color: rgb(0, 0, 0);
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+
+.product-rating {
+    color: #FFD700;
+    margin-top: 10px;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.space-x {
+    margin: 0 5px;
+}
+
+.page-number {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    margin: 0 2px;
+    border-radius: 3px;
+}
+
+.page-number.active {
+    background-color: $shopapp-color !important;
+    color: #fff;
+    border-color: $shopapp-color !important;
+}
+
+.btn-primary {
+    background-color: $shopapp-color;
+    border-color: $shopapp-color;
+}
+
+.btn.btn-primary {
+    margin-left: 10px;
+}

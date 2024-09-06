@@ -1,0 +1,78 @@
+<app-header></app-header>
+<div class="container">
+    <h1>Chi tiết đơn hàng</h1>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Thông tin đơn hàng</h3>
+            <p><strong>Tên khách hàng:</strong> {{ orderResponse.fullname }}</p>
+            <p><strong>Số điện thoại:</strong> {{ orderResponse.phone_number }}</p>
+            <p><strong>Email:</strong> {{ orderResponse.email }}</p>
+            <p><strong>Địa chỉ:</strong> {{ orderResponse.address }}</p>
+            <p><strong>Ghi chú:</strong> {{ orderResponse.note }}</p>
+            <p><strong>Ngày đặt hàng:</strong> {{ orderResponse.order_date | date }}</p>
+            <p><strong>Trạng thái đơn hàng:</strong> {{ orderResponse.status }}</p>
+            <h3>Danh sách sản phẩm</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Giá</th>
+                        <th>Số lượng</th>
+                        <!--<th>Total</th>-->
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(order_detail of orderDetails_admin;
+                    track order_detail.id) {
+                    <tr>
+                        <td>{{ order_detail.product_name }}</td>
+                        <td>
+                            <p>{{order_detail.price}}</p>
+                        </td>
+                        <td>
+                            <p>{{order_detail.number_of_products}}</p>
+                        </td>
+                        @if(orderResponse.status === 'delivered' ){
+                        @if(showButtonFormMap[order_detail.product_id]){
+                        <td>
+                            <button class="btn btn-primary" disabled>Đã đánh giá</button>
+                        </td>
+                        }@else {
+                        <td>
+                            <button class="btn btn-primary" (click)="showRatingBox(order_detail.product_id)">đánh
+                                giá</button>
+                        </td>
+                        }
+                        }
+                        @if (showRatingFormMap[order_detail.product_id]) {
+                    <tr>
+                        <td colspan="4">
+                            <div>
+                                <label for="starRating">Đánh giá số sao:</label>
+                                <select id="starRating" [(ngModel)]="ratingUser">
+                                    @for (star of stars; track $index) {<option [value]="star">{{ star }}</option>}
+
+                                </select>
+                            </div>
+                            <div>
+                                <label for="comment">Bình luận:</label>
+                                <input type="text" class="form-control" [(ngModel)]="comment" id="phoneNumber">
+                            </div>
+                            <div>
+                                <button class="btn btn-success"
+                                    (click)="submitRating(order_detail.product_id,ratingUser,comment)">Gửi đánh
+                                    giá</button>
+                                <button class="btn btn-secondary"
+                                    (click)="hideRatingBox(order_detail.product_id)">Hủy</button>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
