@@ -58,11 +58,15 @@ export class OrderListComponent implements OnInit {
     this.localStorage = document.defaultView?.localStorage;
   }
   ngOnInit(): void {
+    debugger;
+    // Đặt giá trị currentPage luôn bằng 0 ban đầu
+    this.currentPage = 0;
 
-    debugger
-    this.currentPage = Number(this.localStorage?.getItem('currentOrderAdminPage')) || 0;
+    // Gọi hàm lấy đơn hàng với currentPage đã được thiết lập
     this.getOrdersByUserId(this.userId, this.currentPage, this.itemsPerPage);
   }
+
+
   getOrdersByUserId(userId: number, page: number, limit: number) {
     debugger
     this.orderService.getOrdersByUserId(userId, page, limit).subscribe({
@@ -81,11 +85,12 @@ export class OrderListComponent implements OnInit {
     const maxVisiblePages = 5;
     const halfVisiblePages = Math.floor(maxVisiblePages / 2);
 
-    let startPage = Math.max(currentPage - halfVisiblePages, 1);
-    let endPage = Math.min(startPage + maxVisiblePages - 1, totalPages);
+    // Bắt đầu từ 0 thay vì 1
+    let startPage = Math.max(currentPage - halfVisiblePages, 0);
+    let endPage = Math.min(startPage + maxVisiblePages - 1, totalPages - 1);
 
     if (endPage - startPage + 1 < maxVisiblePages) {
-      startPage = Math.max(endPage - maxVisiblePages + 1, 1);
+      startPage = Math.max(endPage - maxVisiblePages + 1, 0);
     }
 
     return new Array(endPage - startPage + 1).fill(0)

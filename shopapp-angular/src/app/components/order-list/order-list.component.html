@@ -65,7 +65,7 @@
                 @for(page of visiblePages; track page) {
                 <ng-container>
                     <li class="page-item" [ngClass]="{'active': page === currentPage}">
-                        <a class="page-link" (click)="onPageChange(page)">{{ page }}</a>
+                        <a class="page-link" (click)="onPageChange(page)">{{ page +1 }}</a>
                     </li>
                 </ng-container>
                 }

@@ -348,8 +348,8 @@ public class ProductController {
         Faker faker = new Faker();
 
         for (int i = 0; i < 1_000_000; i++) {
-            int userId = faker.number().numberBetween(2, 13);
-            int productId = faker.number().numberBetween(1, 101);
+            int userId = faker.number().numberBetween(7, 13);
+            int productId = faker.number().numberBetween(1, 50);
             int rate = faker.number().numberBetween(1, 6);
 
             UserRatingDTO userRatingDTO = UserRatingDTO.builder()

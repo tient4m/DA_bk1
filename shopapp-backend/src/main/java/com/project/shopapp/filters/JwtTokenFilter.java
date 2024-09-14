@@ -98,6 +98,7 @@ public class JwtTokenFilter extends OncePerRequestFilter{
                 Pair.of(String.format("%s/rates", apiPrefix), "POST"),
                 Pair.of(String.format("%s/rates/isRate", apiPrefix), "GET"),
                 Pair.of(String.format("%s/orders/invoices**", apiPrefix), "GET"),
+                Pair.of(String.format("%s/products/generateFakeProductRate", apiPrefix), "POST"),
 
 
                 // Swagger

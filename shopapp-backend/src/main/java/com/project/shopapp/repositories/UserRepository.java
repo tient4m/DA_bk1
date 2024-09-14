@@ -22,7 +22,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
             "OR o.address LIKE %:keyword% " +
             "OR o.phoneNumber LIKE %:keyword%) " +
             "AND LOWER(o.role.name) = 'user'")
-    Page<User> findAll(@Param("keyword") String keyword, Pageable pageable);
+    Page<User> findAllByKeyword(@Param("keyword") String keyword, Pageable pageable);
+
+    List<User> findAll();
+
+
     List<User> findByRoleId(Long roleId);
 }
 

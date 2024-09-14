@@ -10,7 +10,6 @@ import lombok.*;
 @Getter
 @Setter
 public class UserRatingDTO {
-
     private Long id;
     private Long user;
     private Long product;

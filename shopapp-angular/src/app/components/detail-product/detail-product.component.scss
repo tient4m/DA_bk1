@@ -1,11 +1,13 @@
 @import '../../styles/shared-styles.scss';
 
+/* Phần chung */
 .intro-section {
     color: rgb(0, 0, 0);
     padding: 20px;
     text-align: center;
 }
 
+/* Phần bình luận */
 .comment {
     padding: 10px;
     margin-bottom: 15px;
@@ -18,6 +20,11 @@
     margin: 0;
     font-size: 1.1em;
     color: #333;
+
+    strong {
+        color: #007bff;
+        /* Màu sắc để làm nổi bật tên người dùng */
+    }
 }
 
 .comment-content {
@@ -26,12 +33,7 @@
     color: #555;
 }
 
-.comment-user strong {
-    color: #007bff;
-    /* Màu sắc để làm nổi bật tên người dùng */
-}
-
-
+/* Phần hiển thị sản phẩm */
 .product-image {
     height: 800px;
     width: 650px;
@@ -41,81 +43,129 @@
 .thumbnail-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .thumbnail-item {
     width: 120px;
     height: 120px;
     margin-right: 5px;
-    /* Thêm khoảng cách ngang giữa các ảnh */
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &.active {
+        border: 4px solid $shopapp-tint-color;
+    }
 }
 
-.thumbnail-item:last-child {
-    margin-right: 0;
-    /* Xóa khoảng cách ngang ở ảnh cuối cùng */
-}
-
-.thumbnail-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.thumbnail-item.active {
-    border: 4px solid $shopapp-tint-color;
-}
-
-.product-details {
-    color: rgb(2, 2, 2);
+.product-main-info {
     padding: 20px;
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.product-main-info h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.product-main-info p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.product-main-info p i.yellow-star-with-border {
+    color: #ffca28;
+    /* Màu vàng cho sao */
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
+    margin-left: 5px;
 }
 
 .product-actions {
     display: flex;
-    justify-content: flex-start;
+    gap: 15px;
+    /* Khoảng cách giữa các nút */
     margin-top: 20px;
 }
 
 .product-actions button {
-    margin-right: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.border-wrapper {
-    border: 1px solid rgb(0, 0, 0);
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+}
+
+.btn-success:hover {
+    background-color: #218838;
 }
 
 .product-quantity {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+.border-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .product-quantity button {
     background-color: transparent;
     border: none;
-    color: rgb(0, 0, 0);
-    font-size: 16px;
+    font-size: 18px;
+    color: #555;
     cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.product-quantity button:hover {
+    color: #007bff;
 }
 
 .product-quantity input {
-    background-color: transparent;
     border: none;
-    color: rgb(0, 0, 0);
-    font-size: 16px;
-    text-align: center;
     width: 40px;
-    margin: 0 10px;
+    text-align: center;
+    font-size: 16px;
+    background-color: transparent;
 }
 
 .product-quantity input:focus {
     outline: none;
-}
-
-.yellow-star-with-border {
-    color: yellow;
-    text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
 }

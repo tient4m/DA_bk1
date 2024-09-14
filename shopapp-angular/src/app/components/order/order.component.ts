@@ -48,7 +48,8 @@ export class OrderComponent implements OnInit {
   private router = inject(Router);
   private vnpayService = inject(VnpayService);
 
-  orderForm: FormGroup; // Đối tượng FormGroup để quản lý dữ liệu của form
+  orderForm: FormGroup;
+  // Đối tượng FormGroup để quản lý dữ liệu của form
   cartItems: { product: Product, quantity: number }[] = [];
   totalAmount: number = 0; // Tổng tiền
   couponDiscount: number = 0; //số tiền được discount từ coupon

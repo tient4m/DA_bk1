@@ -206,7 +206,7 @@ public class UserService implements IUserService{
 
     @Override
     public Page<User> findAll(String keyword, Pageable pageable) {
-        return userRepository.findAll(keyword, pageable);
+        return userRepository.findAllByKeyword(keyword, pageable);
     }
 
     @Override
